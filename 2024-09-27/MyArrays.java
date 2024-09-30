@@ -12,11 +12,19 @@ public class MyArrays{
 
   public static int[] returnCopy(int[]ary){
     int[] answer = new int[ary.length];
-    if (ary.length == 0){
-      return answer;
-    }
     for (int i = 0; i < ary.length; i++){
       answer[i] = ary[i];
+    }
+    return answer;
+  }
+
+  public static int[] concatArray(int[]ary1,int[]ary2){
+    int[] answer = new int[ary1.length + ary2.length];
+    for (int i = 0; i < ary1.length; i++){
+      answer[i] = ary1[i];
+    }
+    for (int i = ary1.length; i < ary1.length + ary2.length; i++){
+      answer[i] = ary2[i - ary1.length];
     }
     return answer;
   }
@@ -44,14 +52,14 @@ public class MyArrays{
     System.out.print("Same address for arrays 2 are ");
     System.out.println(old2 == new2);
 
-    //int[] original = new int[]{11,22,33};
-    //int[] add = new int[]{55,44,33,22,11};
-    //System.out.println(concatArray(original, add));
-    //original = new int[4];
-    //add = new int[]{55,44,33,22,11};
-    //System.out.println(concatArray(original, add));
-    //original = new int[]{11,22,33};
-    //add = new int[4];
-    //System.out.println(concatArray(original, add));
+    int[] original = new int[]{11,22,33};
+    int[] add = new int[]{55,44,33,22,11};
+    System.out.println(aryToString(concatArray(original, add)));
+    original = new int[4];
+    add = new int[]{55,44,33,22,11};
+    System.out.println(aryToString(concatArray(original, add)));
+    original = new int[]{11,22,33};
+    add = new int[4];
+    System.out.println(aryToString(concatArray(original, add)));
   }
 }
