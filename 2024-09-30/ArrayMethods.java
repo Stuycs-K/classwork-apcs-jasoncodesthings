@@ -40,13 +40,19 @@ public class ArrayMethods {
         answer += "], [";
       }
     }
-    return answer + "]]""
+    return answer + "]]";
   }
 
   /*Return the sum of all of the values in the 2D array */
   public static int arr2DSum(int[][]nums){
     //use a nested loop to solve this
-    return null;//place holder return value so it compiles.
+    int answer = 0;
+    for (int i = 0; i < nums.length; i++){
+      for (int j = 0; j < nums[i].length; j++){
+        answer += nums[i][j];
+      }
+    }
+    return answer;
   }
 
   /**Rotate an array by returning a new array with the rows and columns swapped.
@@ -61,17 +67,22 @@ public class ArrayMethods {
 
     //testing arrToString(int[][]ary)
     int[][] ary1 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    System.out.println("Expected: {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}} | Return: " + arrToString(ary1).equals("{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}"));
+    System.out.println("Expected: [[1, 2, 3], [4, 5, 6], [7, 8, 9]] | Return: " + arrToString(ary1));
     int[][] ary2 = {{1, 2}, {4, 5}, {7, 8}};
-    System.out.println("Expected: {{1, 2}, {4, 5}, {7, 8}} | Return: " + arrToString(ary2).equals("{{1, 2}, {4, 5}, {7, 8}}"));
+    System.out.println("Expected: [[1, 2], [4, 5], [7, 8]] | Return: " + arrToString(ary2));
     int[][] ary3 = {{}, {}, {}};
-    System.out.println("Expected: {{}, {}, {}} | Return: " + arrToString(ary3).equals("{{}, {}, {}}"));
+    System.out.println("Expected: [[], [], []] | Return: " + arrToString(ary3));
     int[][] ary4 = {{1, 2, 3, 4}, {5, 6}, {7, 8, 9, 10, 11}};
-    System.out.println("Expected: {{1, 2, 3, 4}, {5, 6}, {7, 8, 9, 10, 11}} | Return: " + arrToString(ary4).equals("{{1, 2, 3, 4}, {5, 6}, {7, 8, 9, 10, 11}}"));
+    System.out.println("Expected: [[1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]] | Return: " + arrToString(ary4));
     int[][] ary5 = {{1, 2, 3}, {}, {7, 8, 9, 10}};
-    System.out.println("Expected: {{1, 2, 3}, {}, {7, 8, 9, 10}} | Return: " + arrToString(ary5).equals("{{1, 2, 3}, {}, {7, 8, 9, 10}}"));
+    System.out.println("Expected: [[1, 2, 3], [], [7, 8, 9, 10]] | Return: " + arrToString(ary5));
 
-
+    //testing arr2DSum
+    System.out.println("Expected: 45 | Return: " + arr2DSum(ary1));
+    System.out.println("Expected: 27 | Return: " + arr2DSum(ary2));
+    System.out.println("Expected: 0 | Return: " + arr2DSum(ary3));
+    System.out.println("Expected: 66 | Return: " + arr2DSum(ary4));
+    System.out.println("Expected: 40 | Return: " + arr2DSum(ary5));
   }
 
 }
