@@ -93,7 +93,19 @@ public static void replaceNegative(int[][] vals) {
 //You SHOULD write a helper method for this.
 //If you don't see a good way to do that, you should stop and look at prior methods.
 public static int[][] copy(int[][] nums){
-  return null;//placeholder so it compiles
+  int[][] answer = new int[nums.length][];
+  for (int i = 0; i < nums.length; i++){
+    answer[i] = copyindividual(nums[i]);
+  }
+  return answer;//placeholder so it compiles
+}
+
+public static int[] copyindividual(int[] index){
+  int[] individual = new int[index.length];
+  for (int i = 0; i < index.length; i++){
+    individual[i] = index[i];
+  }
+  return individual;
 }
 
   public static void main (String[] args) {
@@ -128,8 +140,30 @@ public static int[][] copy(int[][] nums){
     int[][] ary8 = {{1, 2, 3, 4}};
     System.out.println("Expected: [[1], [2], [3], [4]] | Return: " + arrToString(swapRC(ary8)));
 
+    System.out.println("");
+    System.out.println("Testing replaceNegative");
     int[][] ary9 = {{-17, -5, 14}, {2, 67, -4}};
-    System.out.println("Expected: [[1, 0, 14], [2, 67, 0]]");
+    replaceNegative(ary9);
+    System.out.println("Expected: [[1, 0, 14], [2, 67, 0]] | Return: " + arrToString(ary9));
+    int[][] ary10 = {{17, 5, 14}, {2, 67, 0}, {9, 99, -999}};
+    replaceNegative(ary10);
+    System.out.println("Expected: [[17, 5, 14], [2, 67, 0], [9, 99, 1]] | Return: " + arrToString(ary10));
+    int[][] ary11 = {{-17, -5, -14}, {-2, -67, -4}};
+    replaceNegative(ary11);
+    System.out.println("Expected: [[1, 0, 0], [0, 1, 0]] | Return: " + arrToString(ary11));
+    int[][] ary12 = {{-1, 0, 1}, {0, -1, 0}, {1, 0, -1}, {-1, 1, 0, -1}};
+    replaceNegative(ary12);
+    System.out.println("Expected: [[1, 0, 1], [0, 1, 0], [1, 0, 1], [0, 1, 0, 1]] | Return: " + arrToString(ary12));
+
+    System.out.println("");
+    System.out.println("Testing copy");
+    int[][] ary13 = {{-6, 39, 99}, {100, 101, 102, 103}};
+    int[][] ary13copy = copy(ary13);
+    System.out.println("Expected: [[-6, 39, 99], [100, 101, 102, 103]] | Return: " + arrToString(ary13copy));
+    ary13copy[1][2] = 9;
+    System.out.println("Changed the copy so that arr13copy[1][2] is now 9 instead of 102.");
+    System.out.println("Original: expected [[-6, 39, 99], [100, 101, 102, 103]] | Return: " + arrToString(ary13));
+    System.out.println("Copy: expected [-6, 39, 99], [100, 101, 9, 103]] | Return: " + arrToString(ary13copy));
   }
 
 }
