@@ -1,6 +1,13 @@
 import java.util.Arrays;
 public class ArrayDemo{
   public static void main(String[]args){
+    System.out.println("Testing countZeros2D");
+    int[][] ary1 = [[1, 2, 0], [3, 0], [0], [100, 90, 0]];
+    System.out.println("Expected 4 | Return: " + countZeros2D(ary1));
+    int[][] ary1 = [[0, 8, 0], [0, 0], [1], [70, 80, 0]];
+    System.out.println("Expected 5 | Return: " + countZeros2D(ary1));
+    int[][] ary1 = [[1, 2, 1], [3, 2], [2], [100, 90, 101]];
+    System.out.println("Expected 0 | Return: " + countZeros2D(ary1));
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
