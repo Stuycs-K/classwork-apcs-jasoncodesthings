@@ -8,6 +8,13 @@ public class ArrayDemo{
     System.out.println("Expected 5 | Return: " + countZeros2D(test2));
     int[][] test3 = new int[][]{{1, 2, 1}, {3, 2}, {2}, {100, 90, 101}};
     System.out.println("Expected 0 | Return: " + countZeros2D(test3));
+
+    System.out.println("");;
+    System.out.println("Testing htmlTable");
+    int[][] test4 = new int[][]{{5}, {30, 9, 2}, {6, 7}};
+    System.out.println("Expected <table><tr><td>5</td></tr><tr><td>30</td><td>9</td><td>2</td></tr><tr><td>6</td><td>7</td></tr></table> | Return: " + htmlTable(test4));
+    int[][] test5 = new int[][]{{4, 3}, {99}};
+    System.out.println("Expected <table><tr><td>4</td><td>3</td></tr><tr><td>99</td></tr></table> | Return: " + htmlTable(test5));
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -131,6 +138,14 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String answer = "<table>";
+    for (int i = 0; i < nums.length; i++){
+      answer += "<tr>";
+      for (int j = 0; j < nums[i].length; j++){
+        answer = answer + "<td>" + nums[i][j] + "</td>";
+      }
+      answer += "</tr>";
+    }
+    return answer + "</table>";
   }
 }
