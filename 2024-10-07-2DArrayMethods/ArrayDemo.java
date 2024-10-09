@@ -2,12 +2,12 @@ import java.util.Arrays;
 public class ArrayDemo{
   public static void main(String[]args){
     System.out.println("Testing countZeros2D");
-    int[][] ary1 = {{1, 2, 0}, {3, 0}, {0}, {100, 90, 0}};
-    System.out.println("Expected 4 | Return: " + countZeros2D(ary1));
-    ary1 = {{0, 8, 0}, {0, 0}, {1}, {70, 80, 0}};
-    System.out.println("Expected 5 | Return: " + countZeros2D(ary1));
-    ary1 = {{1, 2, 1}, {3, 2}, {2}, {100, 90, 101}};
-    System.out.println("Expected 0 | Return: " + countZeros2D(ary1));
+    int[][] test1 = new int[][]{{1, 2, 0}, {3, 0}, {0}, {100, 90, 0}};
+    System.out.println("Expected 4 | Return: " + countZeros2D(test1));
+    int[][] test2 = new int[][]{{0, 8, 0}, {0, 0}, {1}, {70, 80, 0}};
+    System.out.println("Expected 5 | Return: " + countZeros2D(test2));
+    int[][] test3 = new int[][]{{1, 2, 1}, {3, 2}, {2}, {100, 90, 101}};
+    System.out.println("Expected 0 | Return: " + countZeros2D(test3));
     //write your tests here!
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
@@ -50,7 +50,7 @@ public class ArrayDemo{
   public static int countZeros2D(int[][] nums){
     int answer = 0;
     for (int i = 0; i < nums.length; i++){
-      for (int j = 0; i < nums[i].length; j++){
+      for (int j = 0; j < nums[i].length; j++){
         if (nums[i][j] == 0){
           answer++;
         }
