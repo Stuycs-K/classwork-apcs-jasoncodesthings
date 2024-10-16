@@ -22,5 +22,22 @@ public class Demo{
     System.out.println( distance(p1,p2));
     System.out.println( Point.distance(p1,p2));
     System.out.println( p1.distanceTo(p2));
+
+    System.out.println("");
+    Point p4 = new Point(9,9);
+    Point p5 = new Point(14,9);
+    System.out.println( distance(p4,p5));
+    System.out.println( Point.distance(p4,p5));
+    System.out.println( p4.distanceTo(p5));
+    Point p6 = new Point(10,10);
+    Point p7 = new Point(10,14);
+    System.out.println( distance(p6,p7));
+    System.out.println( Point.distance(p6,p7));
+    System.out.println( p6.distanceTo(p7));
+    Point p8 = new Point(5,5);
+    Point p9 = new Point(6,6);
+    System.out.println( distance(p8,p9));
+    System.out.println( Point.distance(p8,p9));
+    System.out.println( p8.distanceTo(p9));
   }
 }
