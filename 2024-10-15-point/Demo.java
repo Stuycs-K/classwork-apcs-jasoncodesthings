@@ -39,5 +39,14 @@ public class Demo{
     System.out.println( distance(p8,p9));
     System.out.println( Point.distance(p8,p9));
     System.out.println( p8.distanceTo(p9));
+
+    System.out.println("");
+    System.out.println("Testing Equalaterial Triangles");
+    Point triangle1 = new Point(0,0);
+    Point triangle2 = new Point(2,0);
+    Point triangle3 = new Point(1,Math.sqrt(3));
+    System.out.println("Distance from 1 to 2: " + distance(triangle1,triangle2));
+    System.out.println("Distance from 2 to 3: " + Point.distance(triangle2,triangle3));
+    System.out.println("Distance from 1 to 3: " + triangle1.distanceTo(triangle3));
   }
 }
