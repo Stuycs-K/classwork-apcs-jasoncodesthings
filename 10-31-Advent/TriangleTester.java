@@ -7,13 +7,18 @@ public class TriangleTester{
     try{
       File file = new File(filename);
       Scanner triangles = new Scanner(file);
-      String str;
-      String[] arr;
+      Scanner line;
+      int[] arr = new int[3];
       int answer = 0;
       while(triangles.hasNextLine()){
-        str = triangles.nextLine();
-        arr = str.split(" ");
-        if (isTriangle(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]))){
+        line = new Scanner(triangles.nextLine());
+        for (int i = 0; i < 3; i++){
+          if (line.hasNext()){
+            arr[i] = line.nextInt();
+            //System.out.println(arr[i]);
+          }
+        }
+        if (isTriangle(arr[0], arr[1], arr[2])){
           answer++;
         }
       }
@@ -31,10 +36,39 @@ public class TriangleTester{
   }
 
   public static int countTrianglesB(String filename){
-    return 0;
+    try{
+      File file = new File(filename);
+      Scanner triangles = new Scanner(file);
+      Scanner line;
+      int[][] arr = new int[3][3];
+      int answer = 0;
+      while(triangles.hasNextLine()){
+        for (int i = 0; i < 3; i++){
+          line = new Scanner(triangles.nextLine());
+          for (int j = 0; j < 3; j++){
+            if (line.hasNext()){
+              arr[i][j] = line.nextInt();
+            }
+          }
+        }
+
+        for (int i = 0; i < 3; i++){
+          if (isTriangle(arr[0][i], arr[1][i], arr[2][i])){
+            answer++;
+          }
+        }
+      }
+      triangles.close();
+      return answer;
+
+    } catch (FileNotFoundException ex) {
+      System.out.println("File not found");
+      return -1;
+    }
   }
 
   public static void main(String[]args){
     System.out.println(countTrianglesA("inputTri.txt"));
+    System.out.println(countTrianglesB("inputTri.txt"));
   }
 }
