@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class TriangleTester{
   public static int countTrianglesA(String filename){
-
     try{
       File file = new File(filename);
       Scanner triangles = new Scanner(file);
@@ -14,7 +13,7 @@ public class TriangleTester{
       while(triangles.hasNextLine()){
         str = triangles.nextLine();
         arr = str.split(" ");
-        if (Integer.parseInt(arr[0]) + Integer.parseInt(arr[1]) > Integer.parseInt(arr[2]) && Integer.parseInt(arr[1]) + Integer.parseInt(arr[2]) > Integer.parseInt(arr[0]) && Integer.parseInt(arr[2]) + Integer.parseInt(arr[0]) > Integer.parseInt(arr[1])){
+        if (isTriangle(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]))){
           answer++;
         }
       }
@@ -25,6 +24,14 @@ public class TriangleTester{
       System.out.println("File not found");
       return -1;
     }
+  }
+
+  public static boolean isTriangle(int s0, int s1, int s2){
+    return s0 + s1 > s2 && s1 + s2 > s0 && s2 + s0 > s1;
+  }
+
+  public static int countTrianglesB(String filename){
+    return 0;
   }
 
   public static void main(String[]args){
