@@ -20,9 +20,14 @@ public class ArrayListPractice{
       }
     }
   }
-  //public static ArrayList<String> makeReversedList( ArrayList<String> original){
+  public static ArrayList<String> makeReversedList( ArrayList<String> original){
     //return a new ArrayList that is in the reversed order of the original.
-  //}
+    ArrayList<String>answer = new ArrayList<String>(original.size());
+    for (int i = original.size() - 1; i >= 0; i--){
+      answer.add(i, original.get(original.size() - i));
+    }
+    return answer;
+  }
   //public static ArrayList<String> mixLists( ArrayList<String> a,  ArrayList<String> b){
     //return a new ArrayList that has all values of a and b in alternating order that is:
     //a[0], b[0], a[1], b[1]...
