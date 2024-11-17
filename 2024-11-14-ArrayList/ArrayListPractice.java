@@ -23,8 +23,8 @@ public class ArrayListPractice{
   public static ArrayList<String> makeReversedList( ArrayList<String> original){
     //return a new ArrayList that is in the reversed order of the original.
     ArrayList<String>answer = new ArrayList<String>(original.size());
-    for (int i = original.size() - 1; i >= 0; i--){
-      answer.add(i, original.get(original.size() - i));
+    for (int i = 0; i < original.size(); i++){
+      answer.add(original.get(original.size() - 1 - i));
     }
     return answer;
   }
