@@ -23,5 +23,11 @@ public class Driver{
     System.out.println(test3);
     System.out.println(test4);
     System.out.println(test5);
+
+    System.out.println("\nTesting mixLists:");
+    ArrayList<String>test6 = ArrayListPractice.mixLists(test, test1);
+    ArrayList<String>test7 = ArrayListPractice.mixLists(test, test2);
+    System.out.println(test6);
+    System.out.println(test7);
   }
 }
