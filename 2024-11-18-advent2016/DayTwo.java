@@ -32,14 +32,11 @@ public class DayTwo{
             }
           }
           else if (line.charAt(i) == 'R'){
-            if (row != 2){
+            if (column != 2){
               column++;
             }
           }
-          System.out.println(row + ", " + column);
         }
-        System.out.println("hi");
-        System.out.println(keypad[row][column]);
         answer += keypad[row][column];
       }
 
