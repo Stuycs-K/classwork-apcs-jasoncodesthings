@@ -9,38 +9,43 @@ public class DayTwo{
       Scanner instructions = new Scanner(file);
       String line;
       String[][] keypad = new String[][]{{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
-      int x = 1;
-      int y = 1;
+      int row = 1;
+      int column = 1;
       String answer = "";
 
       while (instructions.hasNextLine()){
         line = instructions.nextLine();
         for (int i = 0; i < line.length(); i++){
           if (line.charAt(i) == 'U'){
-            if (y != 2){
-              y++;
+            if (row != 0){
+              row--;
             }
           }
           else if (line.charAt(i) == 'D'){
-            if (y != 0){
-              y--;
+            if (row != 2){
+              row++;
             }
           }
           else if (line.charAt(i) == 'L'){
-            if (x != 0){
-              x--;
+            if (column != 0){
+              column--;
             }
           }
           else if (line.charAt(i) == 'R'){
-            if (x != 2){
-              x++;
+            if (row != 2){
+              column++;
             }
           }
-          System.out.println(x + ", " + y);
+          System.out.println(row + ", " + column);
         }
+        System.out.println("hi");
+        System.out.println(keypad[row][column]);
+        answer += keypad[row][column];
       }
 
-      return "";
+      instructions.close();
+      return answer;
+
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return "";
