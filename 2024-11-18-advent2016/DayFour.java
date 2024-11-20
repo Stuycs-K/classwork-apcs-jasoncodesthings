@@ -14,6 +14,8 @@ public class DayFour{
       String actualChecksum = "";
       String alphabet = "abcdefghijklmnopqrstuvwxyz";
       int[] frequencies = new int[26];
+      int maxNum = -1;
+      int maxIndex = -1;
       int answer = 0;
 
       while (data.hasNextLine()){
@@ -30,10 +32,22 @@ public class DayFour{
             }
           }
         }
-        for (int i = 0; i < 26; i++){
-          System.out.println(frequencies[i]);
+
+        for (int i = 0; i < 5; i++){
+          for (int j = 0; j < 26; j++){
+            if (frequencies[j] > maxNum){
+              maxNum = frequencies[j];
+              maxIndex = j;
+            }
+          }
+          actualChecksum += alphabet.charAt(maxIndex);
+          maxNum = -1;
+          frequencies[maxIndex] = -1;
         }
-        System.out.println("iuwegyuirdgfiuhui");
+        System.out.println(actualChecksum);
+        frequencies = new int[26];
+        maxNum = -1;
+        actualChecksum = "";
       }
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
