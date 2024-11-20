@@ -27,7 +27,7 @@ public class DayTwoSecond{
             }
           }
           else if (line.charAt(i) == 'L'){
-            if ((column > 3) || (column == 2 && row != 0 && row != 4) || (column == 1 && row == 2)){
+            if ((column > 2) || (column == 2 && row != 0 && row != 4) || (column == 1 && row == 2)){
               column--;
             }
           }
@@ -36,12 +36,15 @@ public class DayTwoSecond{
               column++;
             }
           }
-          System.out.println(line.charAt(i));
-          System.out.println(row);
-          System.out.println(column);
         }
-        if (row == 1){
-            answer += keypad[row][column];
+        if (row == 0 || row == 4){
+          answer += keypad[row][0];
+        }
+        else if (row == 1 || row == 3){
+          answer += keypad[row][column - 1];
+        }
+        else{
+          answer += keypad[row][column];
         }
       }
 
