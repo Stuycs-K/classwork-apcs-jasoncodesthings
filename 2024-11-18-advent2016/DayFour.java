@@ -54,7 +54,8 @@ public class DayFour{
         actualChecksum = "";
       }
 
-    return answer;
+      data.close();
+      return answer;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;

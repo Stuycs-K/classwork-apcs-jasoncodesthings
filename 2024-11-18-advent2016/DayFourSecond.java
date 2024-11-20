@@ -37,7 +37,8 @@ public class DayFourSecond{
         modify = "";
       }
 
-    return "";
+      data.close();
+      return "";
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return "";
