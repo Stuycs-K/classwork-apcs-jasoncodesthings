@@ -86,22 +86,6 @@ public class DayOneSecond{
           x -= Integer.parseInt(steps[i].substring(1));
         }
 
-/*
-        for (int j = 0; j < xtracker.size(); j++){
-          System.out.println(xtracker);
-          System.out.println(ytracker);
-          System.out.println(x);
-          System.out.println(y);
-          if (xtracker.get(j) == x && ytracker.get(j) == y){
-            return Math.abs(x) + Math.abs(y);
-          }
-          else{
-            xtracker.add(Integer.valueOf(x));
-            ytracker.add(Integer.valueOf(y));
-          }
-        }*/
-        //System.out.println(xtracker);
-        //System.out.println(ytracker);
       }
 
       readFile.close();
