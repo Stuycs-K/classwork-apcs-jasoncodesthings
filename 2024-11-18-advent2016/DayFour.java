@@ -44,16 +44,21 @@ public class DayFour{
           maxNum = -1;
           frequencies[maxIndex] = -1;
         }
-        System.out.println(actualChecksum);
+
+        if (actualChecksum.equals(givenChecksum)){
+          answer += Integer.parseInt(sectorID);
+        }
+
         frequencies = new int[26];
         maxNum = -1;
         actualChecksum = "";
       }
+
+    return answer;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
     }
-    return 0;
   }
 
   public static void main(String[]args){
