@@ -2,42 +2,47 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class DayTwo{
+public class DayTwoSecond{
   public static String bathcode(String filename){
     try{
       File file = new File(filename);
       Scanner instructions = new Scanner(file);
       String line;
-      String[][] keypad = new String[][]{{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
-      int row = 1;
-      int column = 1;
+      String[][] keypad = new String[][]{{"1"}, {"2", "3", "4"}, {"5", "6", "7", "8", "9"}, {"A", "B", "C"}, {"D"}};
+      int row = 2;
+      int column = 0;
       String answer = "";
 
       while (instructions.hasNextLine()){
         line = instructions.nextLine();
         for (int i = 0; i < line.length(); i++){
           if (line.charAt(i) == 'U'){
-            if (row != 0){
+            if ((row > 2) || (row == 2 && column != 0 && column != 4) || (row == 1 && column == 2)){
               row--;
             }
           }
           else if (line.charAt(i) == 'D'){
-            if (row != 2){
+            if ((row < 2) || (row == 2 && column != 0 && column != 4) || (row == 3 && column == 2)){
               row++;
             }
           }
           else if (line.charAt(i) == 'L'){
-            if (column != 0){
+            if ((column > 3) || (column == 2 && row != 0 && row != 4) || (column == 1 && row == 2)){
               column--;
             }
           }
           else if (line.charAt(i) == 'R'){
-            if (column != 2){
+            if ((column < 2) || (column == 2 && row != 0 && row != 4) || (column == 3 && row == 2)){
               column++;
             }
           }
+          System.out.println(line.charAt(i));
+          System.out.println(row);
+          System.out.println(column);
         }
-        answer += keypad[row][column];
+        if (row == 1){
+            answer += keypad[row][column];
+        }
       }
 
       instructions.close();
