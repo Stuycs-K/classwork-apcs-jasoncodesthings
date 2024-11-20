@@ -12,17 +12,28 @@ public class DayFour{
       String sectorID;
       String givenChecksum;
       String actualChecksum = "";
+      String alphabet = "abcdefghijklmnopqrstuvwxyz";
+      int[] frequencies = new int[26];
       int answer = 0;
 
       while (data.hasNextLine()){
         line = data.nextLine();
         name = line.substring(0, line.lastIndexOf("-"));
+        name = name.replace("-", "");
         sectorID = line.substring(line.lastIndexOf("-") + 1, line.indexOf("["));
         givenChecksum = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
-        System.out.println(line);
-        System.out.println(name);
-        System.out.println(sectorID);
-        System.out.println(givenChecksum);
+
+        for (int i = 0; i < name.length(); i++){
+          for (int j = 0; j < alphabet.length(); j++){
+            if (name.charAt(i) == alphabet.charAt(j)){
+              frequencies[j]++;
+            }
+          }
+        }
+        for (int i = 0; i < 26; i++){
+          System.out.println(frequencies[i]);
+        }
+        System.out.println("iuwegyuirdgfiuhui");
       }
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
