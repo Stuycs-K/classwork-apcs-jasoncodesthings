@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class DaySeven{
   public static int ipCheck(String filename){
@@ -8,24 +9,36 @@ public class DaySeven{
       File file = new File(filename);
       Scanner addresses = new Scanner(file);
       String line;
-      String left;
-      String middle;
-      String right;
+      int answer = 0;
+      //make an arraylists of the substrings and an arraylist of booleans, check if each boolean is true/false
 
       while (addresses.hasNextLine()){
         line = addresses.nextLine();
-        left = line.substring(0, line.indexOf("["));
-        middle = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
-        right = line.substring(line.indexOf("]") + 1);
-        System.out.println(tlsCheck(left));
-        System.out.println(tlsCheck(middle));
-        System.out.println(tlsCheck(right));
-        System.out.println("");
+        ArrayList<String>sections = new ArrayList<String>();
+        while (line.length() != 0){
+          System.out.println(line);
+          if ((sections.size() % 2 == 0) && (line.indexOf("]") != -1)){
+            sections.add(line.substring(0, line.indexOf("[")));
+            line = line.substring(line.indexOf("[") + 1);
+          }
+          else{
+            if (line.indexOf("]") != -1){
+              sections.add(line.substring(0, line.indexOf("]")));
+              line = line.substring(line.indexOf("]") + 1);
+            }
+            else{
+              sections.add(line);
+              line = "";
+            }
+          }
+          System.out.println(sections);
+        }
       }
-      return 0;
+      addresses.close();
+      return answer;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
-      return 0;
+      return -1;
     }
   }
 
