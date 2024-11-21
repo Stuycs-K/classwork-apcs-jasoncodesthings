@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class DaySix{
+public class DaySixSecond{
   public static String message(String filename){
     try{
       File file = new File(filename);
@@ -45,7 +45,7 @@ public class DaySix{
     //System.out.println(column);
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
     int[] frequencies = new int[26];
-    int maxNum = -1;
+    int minNum = column.size();
     int maxIndex = -1;
 
     for (int i = 0; i < column.size(); i++){
@@ -57,8 +57,8 @@ public class DaySix{
     }
 
     for (int i = 0; i < 26; i++){
-      if (frequencies[i] > maxNum){
-        maxNum = frequencies[i];
+      if (frequencies[i] < minNum){
+        minNum = frequencies[i];
         maxIndex = i;
       }
     }
