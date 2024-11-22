@@ -31,8 +31,9 @@ public class DaySeven{
           }
         }
 
-        System.out.println(tlsCheck(sections));
-        return 0;
+        if (tlsCheck(sections)){
+          answer++;
+        }
       }
 
       addresses.close();
