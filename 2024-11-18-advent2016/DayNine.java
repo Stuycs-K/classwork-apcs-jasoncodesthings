@@ -8,6 +8,9 @@ public class DayNine{
       File file = new File(filename);
       Scanner data = new Scanner(file);
       String line;
+      int i = 0;
+      int subsequent;
+      int repeat;
       String full = "";
       String answer = "";
 
@@ -15,7 +18,21 @@ public class DayNine{
         line = data.nextLine();
         full += line;
       }
-      System.out.println(full);
+
+      while (i < full.length()){
+        if (full.charAt(i) == '('){
+          subsequent = Integer.parseInt(full.substring(i).substring(1, full.substring(i).indexOf("x")));
+          repeat = Integer.parseInt(full.substring(i).substring(full.substring(i).indexOf("x") + 1, full.substring(i).indexOf(")")));
+          for (int j = 0; j < repeat; j++){
+            answer += full.substring(i).substring(full.substring(i).indexOf(")") + 1, full.substring(i).indexOf(")") + 1 + subsequent);
+          }
+          i += full.substring(i).indexOf(")") + 1 + subsequent;
+        }
+        else{
+          answer += full.charAt(i);
+          i++;
+        }
+      }
 
       data.close();
       return answer.length();
