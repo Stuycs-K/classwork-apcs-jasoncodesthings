@@ -60,10 +60,14 @@ public class DaySevenSecond{
       }
     }
 
-    System.out.println(possibleABA);
-    System.out.println(possibleBAB);
+    for (int i = 0; i < possibleABA.size(); i++){
+      for (int j = 0; j < possibleBAB.size(); j++){
+        if (possibleABA.get(i).equals("" + possibleBAB.get(j).charAt(1) + possibleBAB.get(j).charAt(0) + possibleBAB.get(j).charAt(1))){
+          return true;
+        }
+      }
+    }
     return false;
-
   }
 
   public static void main(String[]args){
