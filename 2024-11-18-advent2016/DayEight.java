@@ -8,7 +8,7 @@ public class DayEight{
       File file = new File(filename);
       Scanner instructions = new Scanner(file);
       String line;
-      boolean[][] screen = new boolean[6][7];
+      boolean[][] screen = new boolean[6][50];
       int answer = 0;
 
       while (instructions.hasNextLine()){
@@ -23,14 +23,17 @@ public class DayEight{
           rotateRow(screen, Integer.parseInt(line.substring(13, line.indexOf("b") - 1)), Integer.parseInt(line.substring(line.lastIndexOf("y") + 2)));
         }
       }
+
       for (int i = 0; i < 6; i++){
-        for (int j = 0; j < 7; j++){
-          System.out.print(screen[i][j]);
+        for (int j = 0; j < 50; j++){
+          if (screen[i][j] == true){
+            answer++;
+          }
         }
-        System.out.println("");
       }
 
-      return -1;
+      instructions.close();
+      return answer;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
@@ -64,13 +67,13 @@ public class DayEight{
 
   public static void rotateRow(boolean[][] screen, int A, int B){
     for (int i = 0; i < B; i++){
-      boolean[] previous = new boolean[7];
-      for (int j = 0; j < 7; j++){
+      boolean[] previous = new boolean[50];
+      for (int j = 0; j < 50; j++){
         previous[j] = screen[A][j];
       }
-      for (int k = 0; k < 7; k++){
+      for (int k = 0; k < 50; k++){
         if (k == 0){
-          screen[A][k] = previous[6];
+          screen[A][k] = previous[49];
         }
         else{
           screen[A][k] = previous[k - 1];
