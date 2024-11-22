@@ -19,6 +19,9 @@ public class DayEight{
         else if (line.substring(0,8).equals("rotate c")){
           rotateColumn(screen, Integer.parseInt(line.substring(16, line.indexOf("b") - 1)), Integer.parseInt(line.substring(line.indexOf("y") + 2)));
         }
+        else{
+          rotateRow(screen, Integer.parseInt(line.substring(13, line.indexOf("b") - 1)), Integer.parseInt(line.substring(line.lastIndexOf("y") + 2)));
+        }
       }
       for (int i = 0; i < 6; i++){
         for (int j = 0; j < 7; j++){
@@ -54,6 +57,23 @@ public class DayEight{
         }
         else{
           screen[k][A] = previous[k - 1];
+        }
+      }
+    }
+  }
+
+  public static void rotateRow(boolean[][] screen, int A, int B){
+    for (int i = 0; i < B; i++){
+      boolean[] previous = new boolean[7];
+      for (int j = 0; j < 7; j++){
+        previous[j] = screen[A][j];
+      }
+      for (int k = 0; k < 7; k++){
+        if (k == 0){
+          screen[A][k] = previous[6];
+        }
+        else{
+          screen[A][k] = previous[k - 1];
         }
       }
     }
