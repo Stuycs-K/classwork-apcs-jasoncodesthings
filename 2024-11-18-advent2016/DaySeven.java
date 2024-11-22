@@ -10,13 +10,11 @@ public class DaySeven{
       Scanner addresses = new Scanner(file);
       String line;
       int answer = 0;
-      //make an arraylists of the substrings and an arraylist of booleans, check if each boolean is true/false
 
       while (addresses.hasNextLine()){
         line = addresses.nextLine();
         ArrayList<String>sections = new ArrayList<String>();
         while (line.length() != 0){
-          System.out.println(line);
           if ((sections.size() % 2 == 0) && (line.indexOf("]") != -1)){
             sections.add(line.substring(0, line.indexOf("[")));
             line = line.substring(line.indexOf("[") + 1);
@@ -31,9 +29,12 @@ public class DaySeven{
               line = "";
             }
           }
-          System.out.println(sections);
         }
+
+        System.out.println(tlsCheck(sections));
+        return 0;
       }
+
       addresses.close();
       return answer;
     } catch (FileNotFoundException ex) {
@@ -42,13 +43,22 @@ public class DaySeven{
     }
   }
 
-  public static boolean tlsCheck(String data){
-    for (int i = 0; i < data.length() - 3; i++){
-      if (data.charAt(i) == data.charAt(i + 3) && data.charAt(i + 1) == data.charAt(i + 2) && data.charAt(i) != data.charAt(i + 1)){
-        return true;
+  public static boolean tlsCheck(ArrayList<String> data){
+    boolean inside = true;
+    boolean outside = false;
+    for (int i = 0; i < data.size(); i++){
+      for (int j = 0; j < data.get(i).length() - 3; j++){
+        if (data.get(i).charAt(j) == data.get(i).charAt(j + 3) && data.get(i).charAt(j + 1) == data.get(i).charAt(j + 2) && data.get(i).charAt(j) != data.get(i).charAt(j + 1)){
+          if (i % 2 == 0){
+            outside = true;
+          }
+          else{
+            inside = false;
+          }
+        }
       }
     }
-    return false;
+    return outside && inside;
   }
 
   public static void main(String[]args){
