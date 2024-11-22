@@ -8,7 +8,7 @@ public class DayEight{
       File file = new File(filename);
       Scanner instructions = new Scanner(file);
       String line;
-      boolean[][] screen = new boolean[3][7];
+      boolean[][] screen = new boolean[6][7];
       int answer = 0;
 
       while (instructions.hasNextLine()){
@@ -16,8 +16,11 @@ public class DayEight{
         if (line.substring(0,4).equals("rect")){
           rectangle(screen, Integer.parseInt(line.substring(line.indexOf(" ") + 1, line.indexOf("x"))), Integer.parseInt(line.substring(line.indexOf("x") + 1)));
         }
+        else if (line.substring(0,8).equals("rotate c")){
+          rotateColumn(screen, Integer.parseInt(line.substring(16, line.indexOf("b") - 1)), Integer.parseInt(line.substring(line.indexOf("y") + 2)));
+        }
       }
-      for (int i = 0; i < 3; i++){
+      for (int i = 0; i < 6; i++){
         for (int j = 0; j < 7; j++){
           System.out.print(screen[i][j]);
         }
@@ -35,6 +38,23 @@ public class DayEight{
     for (int i = 0; i < B; i++){
       for (int j = 0; j < A; j++){
         screen[i][j] = true;
+      }
+    }
+  }
+
+  public static void rotateColumn(boolean[][] screen, int A, int B){
+    for (int i = 0; i < B; i++){
+      boolean[] previous = new boolean[6];
+      for (int j = 0; j < 6; j++){
+        previous[j] = screen[j][A];
+      }
+      for (int k = 0; k < 6; k++){
+        if (k == 0){
+          screen[k][A] = previous[5];
+        }
+        else{
+          screen[k][A] = previous[k - 1];
+        }
       }
     }
   }
