@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class DayNineteen{
   public static int whiteElephant(String filename){
@@ -9,31 +8,18 @@ public class DayNineteen{
       File file = new File(filename);
       Scanner input = new Scanner(file);
       int numElves = Integer.parseInt(input.nextLine());
-      ArrayList<Integer> elfID = new ArrayList<Integer>(numElves);
-      ArrayList<Integer> giftList = new ArrayList<Integer>(numElves);
-      int i = 0;
-      for (int i = 1; i <= numElves; i++){
-        elfID.add(i)
-        giftList.add(1);
+      int exp = 0;
+
+      while (Math.pow(2, exp) < numElves){
+        exp++;
       }
+      exp--;
 
-      
-
-      input.close();
-      return -1;
+      return 2 * (numElves - (int)Math.pow(2, exp)) + 1;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
     }
-  }
-
-  public static int monolopyCheck(int[] elfID, int[] giftList){
-    for (int i = 0; i < elfID.length; i++){
-      if (giftList[i] == elfID.length){
-        return elfID[i];
-      }
-    }
-    return -1;
   }
 
   public static void main(String[]args){
