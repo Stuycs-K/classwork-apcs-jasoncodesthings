@@ -9,6 +9,7 @@ public class DayEight{
       Scanner instructions = new Scanner(file);
       String line;
       boolean[][] screen = new boolean[6][50];
+      String[][] screen2 = new String[6][50]; //This is for reading the letters easier for Part 2.
       int answer = 0;
 
       while (instructions.hasNextLine()){
@@ -30,6 +31,24 @@ public class DayEight{
             answer++;
           }
         }
+      }
+
+      System.out.println("Part 2: ");
+      for (int i = 0; i < 6; i++){
+        for (int j = 0; j < 50; j++){
+          if (screen[i][j] == true){
+            screen2[i][j] = "8";
+          }
+          else{
+            screen2[i][j] = " ";
+          }
+        }
+      }
+      for (int i = 0; i < 6; i++){
+        for (int j = 0; j < 50; j++){
+          System.out.print(screen2[i][j]);
+        }
+        System.out.print("\n");
       }
 
       instructions.close();
@@ -83,6 +102,6 @@ public class DayEight{
   }
 
   public static void main(String[]args){
-    System.out.println(pixelsOnScreen("inputDayEight.txt"));
+    System.out.println("\n\nNumber of pixels on screen: " + pixelsOnScreen("inputDayEight.txt"));
   }
 }
