@@ -26,9 +26,24 @@ public class DayTen{
         if (step.substring(0,5).equals("value")){
           value = Integer.parseInt(step.substring(step.indexOf(" ") + 1, step.indexOf("g") - 1));
           botID = Integer.parseInt(step.substring(step.indexOf("bot") + 4));
-          System.out.println(value + ", " + botID);
+          if (listBots.contains(botID)){
+            if (chip1.get(listBots.indexOf(botID)) == -1){
+              chip1.set(listBots.indexOf(botID), value);
+            }
+            else{
+              chip2.set(listBots.indexOf(botID), value);
+            }
+          }
+          else{
+            listBots.add(botID);
+            chip1.add(value);
+            chip2.add(-1);
+          }
         }
       }
+      System.out.println(listBots);
+      System.out.println(chip1);
+      System.out.println(chip2);
 
       instructions.close();
       return "";
@@ -37,6 +52,7 @@ public class DayTen{
       return "";
     }
   }
+
   public static void main(String[]args){
     System.out.println(chipExchange("inputDayTen.txt"));
   }
