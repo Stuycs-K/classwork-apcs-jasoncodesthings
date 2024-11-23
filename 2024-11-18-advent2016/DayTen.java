@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class DayTen{
-  public static String chipExchange(String filename){
+  public static int chipExchange(String filename){
     try{
       File file = new File(filename);
       Scanner instructions = new Scanner(file);
@@ -49,9 +49,12 @@ public class DayTen{
 
 
             if (chip1 != -1 && chip2 != -1){
+              if ((chip1 == 17 && chip2 == 61) || (chip1 == 61 && chip2 == 17)){
+                return botID;
+              }
               if (chip1 < chip2){
                 if (step.charAt(step.indexOf("low") + 7) == 'b'){
-                  botIDrecieve = Integer.parseInt(step.substring(step.indexOf("low") + 11), step.indexOf("and") - 1);
+                  botIDrecieve = Integer.parseInt(step.substring(step.indexOf("low") + 11, step.indexOf("and") - 1));
                   giving(listBots, chip1List, chip2List, chip1, botID, botIDrecieve);
                 }
                 else{
@@ -96,22 +99,22 @@ public class DayTen{
         i++;
         if (i == listInstructions.size()){
           i = 0;
-        }
+        }/*
         System.out.println(listBots);
         System.out.println(chip1List);
         System.out.println(chip2List);
         System.out.println("iuwhfiureuf");
-        System.out.println(i + ", " + listInstructions.size());
-      }
+        System.out.println(i + ", " + listInstructions.size());*/
+      }/*
       System.out.println(listBots);
       System.out.println(chip1List);
-      System.out.println(chip2List);
+      System.out.println(chip2List);*/
 
       instructions.close();
-      return "";
+      return -1;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
-      return "";
+      return -1;
     }
   }
 
@@ -122,16 +125,11 @@ public class DayTen{
   }
 
   public static void giving(ArrayList<Integer> listBots, ArrayList<Integer> chip1List, ArrayList<Integer> chip2List, int value, int botID, int botIDrecieve){
-    if (listBots.contains(botIDrecieve)){
-      if (chip1List.get(listBots.indexOf(botIDrecieve)) == -1){
-        chip1List.set(listBots.indexOf(botIDrecieve), value);
-      }
-      else{
-        chip2List.set(listBots.indexOf(botIDrecieve), value);
-      }
+    if (chip1List.get(listBots.indexOf(botIDrecieve)) == -1){
+      chip1List.set(listBots.indexOf(botIDrecieve), value);
     }
     else{
-      addBot(listBots, chip1List, chip2List, value, botIDrecieve);
+      chip2List.set(listBots.indexOf(botIDrecieve), value);
     }
 
     if (chip1List.get(listBots.indexOf(botID)) == value){
