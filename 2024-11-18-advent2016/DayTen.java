@@ -8,21 +8,22 @@ public class DayTen{
     try{
       File file = new File(filename);
       Scanner instructions = new Scanner(file);
-      String line, step;
+      String line, step, outputnum;
       ArrayList<String> listInstructions = new ArrayList<String>();
       ArrayList<Integer> listBots = new ArrayList<Integer>();
       ArrayList<Integer> chip1List = new ArrayList<Integer>();
       ArrayList<Integer> chip2List = new ArrayList<Integer>();
+      ArrayList<String> chipin012 = new ArrayList<String>();
       int value, botID, i = 0, chip1, chip2, botIDrecieve;
       while (instructions.hasNextLine()){
         line = instructions.nextLine();
         listInstructions.add(line);
       }
-      System.out.println(listInstructions);
+      //System.out.println(listInstructions);
 
       while (i < listInstructions.size()){
         step = listInstructions.get(i);
-        System.out.println(step);
+        //System.out.println(step);
         if (step.substring(0,5).equals("value")){
           value = Integer.parseInt(step.substring(step.indexOf(" ") + 1, step.indexOf("g") - 1));
           botID = Integer.parseInt(step.substring(step.indexOf("bot") + 4));
@@ -50,7 +51,7 @@ public class DayTen{
 
             if (chip1 != -1 && chip2 != -1){
               if ((chip1 == 17 && chip2 == 61) || (chip1 == 61 && chip2 == 17)){
-                return botID;
+                System.out.println(botID + " is responsible for comparing the 61 and 17 chips.");
               }
               if (chip1 < chip2){
                 if (step.charAt(step.indexOf("low") + 7) == 'b'){
@@ -59,6 +60,11 @@ public class DayTen{
                 }
                 else{
                   chip1List.set(listBots.indexOf(botID), -1);
+                  outputnum = step.substring(step.indexOf("output") + 7, step.indexOf("and") - 1);
+                  if (outputnum.equals("0") || outputnum.equals("1") || outputnum.equals("2")){
+                    chipin012.add(Integer.toString(chip1));
+                    System.out.println(outputnum);
+                  }
                 }
 
                 if (step.charAt(step.indexOf("high") + 8) == 'b'){
@@ -67,6 +73,11 @@ public class DayTen{
                 }
                 else{
                   chip2List.set(listBots.indexOf(botID), -1);
+                  outputnum = step.substring(step.indexOf("output") + 7, step.indexOf("and") - 1);
+                  if (outputnum.equals("0") || outputnum.equals("1") || outputnum.equals("2")){
+                    chipin012.add(Integer.toString(chip2));
+                    System.out.println(outputnum);
+                  }
                 }
               }
               else{
@@ -76,6 +87,11 @@ public class DayTen{
                 }
                 else{
                   chip2List.set(listBots.indexOf(botID), -1);
+                  outputnum = step.substring(step.indexOf("output") + 7, step.indexOf("and") - 1);
+                  if (outputnum.equals("0") || outputnum.equals("1") || outputnum.equals("2")){
+                    chipin012.add(Integer.toString(chip2));
+                    System.out.println(outputnum);
+                  }
                 }
 
                 if (step.charAt(step.indexOf("high") + 8) == 'b'){
@@ -84,6 +100,11 @@ public class DayTen{
                 }
                 else{
                   chip1List.set(listBots.indexOf(botID), -1);
+                  outputnum = step.substring(step.indexOf("output") + 7, step.indexOf("and") - 1);
+                  if (outputnum.equals("0") || outputnum.equals("1") || outputnum.equals("2")){
+                    chipin012.add(Integer.toString(chip1));
+                    System.out.println(outputnum);
+                  }
                 }
               }
               listInstructions.remove(i);
@@ -111,7 +132,8 @@ public class DayTen{
       System.out.println(chip2List);*/
 
       instructions.close();
-      return -1;
+
+      return Integer.parseInt(chipin012.get(0)) * Integer.parseInt(chipin012.get(1)) * Integer.parseInt(chipin012.get(2));
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
