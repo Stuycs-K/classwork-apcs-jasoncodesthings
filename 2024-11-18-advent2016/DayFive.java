@@ -10,14 +10,22 @@ public class DayFive{
       File file = new File(filename);
       Scanner door = new Scanner(file);
       String line;
-      String answer = "";
+      String hashed;
+      StringBuilder answer = new StringBuilder();
+      int i = 0;
 
       while (door.hasNextLine()){
         line = door.nextLine();
-        System.out.println(getMD5(line));
+        while (answer.length() < 8){
+          hashed = getMD5(line + i);
+          if (hashed.substring(0,5).equals("00000")){
+            answer.append(hashed.charAt(5));
+          }
+          i++;
+        }
       }
 
-      return answer;
+      return answer.toString();
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return "";
@@ -29,16 +37,16 @@ public class DayFive{
       MessageDigest md = MessageDigest.getInstance("MD5");
       byte[] bytes = md.digest(doorID.getBytes());
 
-      String output = "";
+      StringBuilder output = new StringBuilder();
       for (int i = 0; i < bytes.length; i++){
         String hex = Integer.toHexString(0xff & bytes[i]);
         if (hex.length() == 1) {
-          output += '0';
+          output.append('0');
         }
-        output += hex;
+        output.append(hex);
       }
 
-      return output;
+      return output.toString();
 
     } catch (NoSuchAlgorithmException e) {
       throw new RuntimeException("MD5 nonexistent.");
