@@ -19,11 +19,9 @@ public class DayTen{
         line = instructions.nextLine();
         listInstructions.add(line);
       }
-      //System.out.println(listInstructions);
 
       while (i < listInstructions.size()){
         step = listInstructions.get(i);
-        //System.out.println(step);
         if (step.substring(0,5).equals("value")){
           value = Integer.parseInt(step.substring(step.indexOf(" ") + 1, step.indexOf("g") - 1));
           botID = Integer.parseInt(step.substring(step.indexOf("bot") + 4));
@@ -120,16 +118,9 @@ public class DayTen{
         i++;
         if (i == listInstructions.size()){
           i = 0;
-        }/*
-        System.out.println(listBots);
-        System.out.println(chip1List);
-        System.out.println(chip2List);
-        System.out.println("iuwhfiureuf");
-        System.out.println(i + ", " + listInstructions.size());*/
-      }/*
-      System.out.println(listBots);
-      System.out.println(chip1List);
-      System.out.println(chip2List);*/
+        }
+      }
+
 
       instructions.close();
 
