@@ -10,14 +10,19 @@ public class DayEighteen{
       String line;
       line = first.nextLine();
       StringBuilder next = new StringBuilder();
+      int answer = 0;
 
       line = "." + line + ".";
-      System.out.println(line);
       for (int i = 0; i < line.length(); i++){
         next.append(".");
       }
+      for (int i = 1; i < line.length() - 1; i++){
+        if (line.charAt(i) == '.'){
+          answer++;
+        }
+      }
 
-      for (int i = 0; i < 9; i++){
+      for (int i = 0; i < 39; i++){
         for (int j = 1; j < line.length() - 1; j++){
           if ((line.charAt(j - 1) == '^' && line.charAt(j) == '^' && line.charAt(j + 1) == '.') ||
           (line.charAt(j - 1) == '.' && line.charAt(j) == '^' && line.charAt(j + 1) == '^') ||
@@ -31,11 +36,15 @@ public class DayEighteen{
         for (int k = 0; k < line.length(); k++){
           next.append(".");
         }
-        System.out.println(line);
+        for (int l = 1; l < line.length() - 1; l++){
+          if (line.charAt(l) == '.'){
+            answer++;
+          }
+        }
       }
 
       first.close();
-      return -1;
+      return answer;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
