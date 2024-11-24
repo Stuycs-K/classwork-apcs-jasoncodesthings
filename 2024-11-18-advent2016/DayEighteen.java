@@ -22,7 +22,7 @@ public class DayEighteen{
         }
       }
 
-      for (int i = 0; i < 39; i++){
+      for (int i = 0; i < 399999; i++){
         for (int j = 1; j < line.length() - 1; j++){
           if ((line.charAt(j - 1) == '^' && line.charAt(j) == '^' && line.charAt(j + 1) == '.') ||
           (line.charAt(j - 1) == '.' && line.charAt(j) == '^' && line.charAt(j + 1) == '^') ||
