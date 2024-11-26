@@ -11,7 +11,6 @@ public class DaySeventeen{
       Scanner input = new Scanner(file);
       String line = input.nextLine();
       int row = 0, column = 0;
-      System.out.println(line);
       String answer = findPath(line, row, column, "");
 
       input.close();
@@ -24,31 +23,37 @@ public class DaySeventeen{
 
   public static String findPath(String ID, int row, int column, String answer){
     String hashed = getMD5(ID + answer).substring(0,4);
-    System.out.println(" ");
-    System.out.println(hashed);
-    String direction = "UDLR";
+    String shortest = null;
     if (row == 3 && column == 3){
-      System.out.println("hi");
       return answer;
     }
 
     if (hashed.charAt(0) >= 98 && row != 0){
-      System.out.println("U");
-      answer = findPath(ID, row - 1, column, answer + "U");
+      String add = findPath(ID, row - 1, column, answer + "U");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
     }
     if (hashed.charAt(1) >= 98 && row != 3){
-      System.out.println("D");
-      answer = findPath(ID, row + 1, column, answer + "D");
+      String add = findPath(ID, row + 1, column, answer + "D");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
     }
     if (hashed.charAt(2) >= 98 && column != 0){
-      System.out.println("L");
-      answer = findPath(ID, row, column - 1, answer + "L");
+      String add = findPath(ID, row, column - 1, answer + "L");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
     }
     if (hashed.charAt(3) >= 98 && column != 3){
-      System.out.println("R");
-      answer = findPath(ID, row, column + 1, answer + "R");
+      String add = findPath(ID, row, column + 1, answer + "R");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
     }
-    return answer;
+
+    return shortest;
   }
 
   public static String getMD5(String doorID){
