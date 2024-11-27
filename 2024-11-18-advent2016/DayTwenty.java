@@ -32,9 +32,6 @@ public class DayTwenty{
         else{
           ipindex++;
         }
-        System.out.println(min);
-        System.out.println(max);
-        System.out.println("h");
       }
 
       ips.close();
