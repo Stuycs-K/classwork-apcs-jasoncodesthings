@@ -16,7 +16,6 @@ public class DayTwelve{
       while (instructions.hasNextLine()){
         lines.add(instructions.nextLine());
       }
-      System.out.println(lines);
 
       while (i < lines.size()){
         if (lines.get(i).substring(0,3).equals("cpy")){
@@ -27,15 +26,28 @@ public class DayTwelve{
             vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))] = Integer.parseInt(lines.get(i).substring(lines.get(i).indexOf(" ") + 1, lines.get(i).lastIndexOf(" ")));
           }
         }
+
         else if (lines.get(i).substring(0,3).equals("inc")){
           vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))]++;
         }
         else if (lines.get(i).substring(0,3).equals("dec")){
           vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))]--;
         }
+
+        else{
+          if (lines.get(i).charAt(4) >= 'a'){
+            if (vals[listLetters.indexOf(lines.get(i).charAt(4))] != 0){
+              i += Integer.parseInt(lines.get(i).substring(lines.get(i).lastIndexOf(" ") + 1)) - 1;
+            }
+          }
+          else{
+            if (Integer.parseInt(lines.get(i).substring(lines.get(i).indexOf(" ") + 1, lines.get(i).lastIndexOf(" "))) != 0){
+              i += Integer.parseInt(lines.get(i).substring(lines.get(i).lastIndexOf(" ") + 1)) - 1;
+            }
+          }
+        }
         i++;
       }
-      System.out.println(vals[0] + ", " + vals[1]);
 
       instructions.close();
       return vals[0];
