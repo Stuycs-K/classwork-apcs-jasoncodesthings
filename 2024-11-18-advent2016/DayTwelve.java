@@ -18,7 +18,7 @@ public class DayTwelve{
       }
       System.out.println(lines);
 
-      while (lines.size() > 0){
+      while (i < lines.size()){
         if (lines.get(i).substring(0,3).equals("cpy")){
           if (lines.get(i).charAt(4) >= 'a'){
             vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))] = vals[listLetters.indexOf(lines.get(i).charAt(4))];
@@ -26,8 +26,14 @@ public class DayTwelve{
           else{
             vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))] = Integer.parseInt(lines.get(i).substring(lines.get(i).indexOf(" ") + 1, lines.get(i).lastIndexOf(" ")));
           }
-          lines.remove(i);
         }
+        else if (lines.get(i).substring(0,3).equals("inc")){
+          vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))]++;
+        }
+        else if (lines.get(i).substring(0,3).equals("dec")){
+          vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))]--;
+        }
+        i++;
       }
       System.out.println(vals[0] + ", " + vals[1]);
 

@@ -1,3 +1,5 @@
 cpy 41 a
 cpy a b
-cpy 42 a
+inc a
+dec a
+dec b
