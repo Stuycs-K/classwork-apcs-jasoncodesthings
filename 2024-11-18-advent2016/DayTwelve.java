@@ -1,19 +1,35 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class DayTwelve{
   public static int finda(String filename){
     try{
       File file = new File(filename);
       Scanner instructions = new Scanner(file);
-      String line;
+      ArrayList<String> lines = new ArrayList<String>();
+      String listLetters = "abcd";
       int[] vals = new int[4];
+      int i = 0;
 
       while (instructions.hasNextLine()){
-        line = instructions.nextLine();
-        
+        lines.add(instructions.nextLine());
       }
+      System.out.println(lines);
+
+      while (lines.size() > 0){
+        if (lines.get(i).substring(0,3).equals("cpy")){
+          if (lines.get(i).charAt(4) >= 'a'){
+            vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))] = vals[listLetters.indexOf(lines.get(i).charAt(4))];
+          }
+          else{
+            vals[listLetters.indexOf(lines.get(i).charAt(lines.get(i).length() - 1))] = Integer.parseInt(lines.get(i).substring(lines.get(i).indexOf(" ") + 1, lines.get(i).lastIndexOf(" ")));
+          }
+          lines.remove(i);
+        }
+      }
+      System.out.println(vals[0] + ", " + vals[1]);
 
       instructions.close();
       return vals[0];
