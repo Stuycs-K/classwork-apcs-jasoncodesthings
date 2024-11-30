@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class DayThirteen{
   public static int numSteps(String filename){
@@ -9,12 +8,9 @@ public class DayThirteen{
       File file = new File(filename);
       Scanner input = new Scanner(file);
       int favnum = Integer.parseInt(input.nextLine());
-      ArrayList<String> beenBefore = new ArrayList<String>();
-      beenBefore.add(1 + "|" + 1);
-      String answer = findPath(favnum, 1, 1, beenBefore, 0);
-      System.out.println(checkDoor(favnum,2,1));
-      System.out.println(checkDoor(favnum,2,0));
-      System.out.println(checkDoor(favnum,1,0));
+      String beenBefore = "";
+      String answer = findPath(favnum, 1, 1, beenBefore, "");
+      System.out.println(answer);
 
       input.close();
       return -1;
@@ -24,15 +20,47 @@ public class DayThirteen{
     }
   }
 
-  public static String findPath(int favnum, int row, int column, ArrayList<String> beenBefore, int answer){
+  public static String findPath(int favnum, int row, int column, String beenBefore, String answer){
     String shortest = null;
-    return "";
-    //if ((row != 0) ||
+    if (column == 7 && row == 4){
+      return answer;
+    }
+
+    if (row != 0 && checkDoor(favnum, column, row - 1) && !beenBefore.contains(column + "|" + (row - 1))){
+      beenBefore += ", " + column + "|" + row;
+      String add = findPath(favnum, row - 1, column, beenBefore, answer + "U");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
+    }
+    if (checkDoor(favnum, column, row + 1) && !beenBefore.contains(column + "|" + (row + 1))){
+      beenBefore += ", " + column + "|" + row;
+      String add = findPath(favnum, row + 1, column, beenBefore, answer + "D");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
+    }
+    if (column != 0 && checkDoor(favnum, column - 1, row) && !beenBefore.contains((column - 1) + "|" + row)){
+      beenBefore += ", " + column + "|" + row;
+      String add = findPath(favnum, row, column - 1, beenBefore, answer + "L");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
+    }
+    if (checkDoor(favnum, column + 1, row) && !beenBefore.contains((column + 1) + "|" + row)){
+      beenBefore += ", " + column + "|" + row;
+      String add = findPath(favnum, row, column + 1, beenBefore, answer + "R");
+      if (add != null && (shortest == null || add.length() < shortest.length())){
+        shortest = add;
+      }
+    }
+
+    return shortest;
   }
 
-  public static boolean checkDoor(int input, int x, int y){
+  public static boolean checkDoor(int favnum, int x, int y){
     int equation = x * x + 3 * x + 2 * x * y + y + y * y;
-    String bin = Integer.toBinaryString(equation + input);
+    String bin = Integer.toBinaryString(equation + favnum);
     int count = 0;
     for (int i = 0; i < bin.length(); i++){
       if (bin.charAt(i) == '1'){
