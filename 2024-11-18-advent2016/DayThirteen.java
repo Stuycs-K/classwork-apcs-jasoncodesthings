@@ -10,10 +10,9 @@ public class DayThirteen{
       int favnum = Integer.parseInt(input.nextLine());
       String beenBefore = "";
       String answer = findPath(favnum, 1, 1, beenBefore, "");
-      System.out.println(answer);
 
       input.close();
-      return -1;
+      return answer.length();
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
@@ -22,7 +21,7 @@ public class DayThirteen{
 
   public static String findPath(int favnum, int row, int column, String beenBefore, String answer){
     String shortest = null;
-    if (column == 7 && row == 4){
+    if (column == 31 && row == 39){
       return answer;
     }
 
