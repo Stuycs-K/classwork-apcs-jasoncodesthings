@@ -13,17 +13,39 @@ public class D2P2{
       while (data.hasNextLine()){
         line = data.nextLine();
         String[] toconvert = line.split(" ");
-        //boolean isValid = true;
+        boolean add = true, after = true;
+        int remove = -1;
         int[] levels = new int[toconvert.length];
         for (int i = 0; i < toconvert.length; i++){
           levels[i] = Integer.parseInt(toconvert[i]);
         }
 
-
-        if (isValid(levels)){
+        for (int i = -1; i < levels.length; i++){
+          if (i == -1){
+            add = isValid(levels);
+            if (add){
+              i = levels.length;
+            }
+          }
+          else{
+            int[] newarr = new int[toconvert.length - 1];
+            for (int j = 0; j < toconvert.length - 1; j++){
+              if (j < i){
+                newarr[j] = levels[j];
+              }
+              else{
+                newarr[j] = levels[j + 1];
+              }
+            }
+            add = isValid(newarr);
+            if (add){
+              i = levels.length;
+            }
+          }
+        }
+        if (add){
           answer++;
         }
-        //isValid = true;
       }
 
       data.close();
