@@ -34,7 +34,6 @@ public class D2P1{
           }
         }
         if (isValid){
-          System.out.println("hi" + levels[0]);
           answer++;
         }
         isValid = true;
