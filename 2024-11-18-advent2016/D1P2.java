@@ -39,6 +39,6 @@ public class D1P2{
 
 
   public static void main(String[]args){
-    System.out.println(totalDistance("inputD1P1.txt"));
+    System.out.println(totalDistance("inputD1.txt"));
   }
 }
