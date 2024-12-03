@@ -17,7 +17,6 @@ public class D3P2{
         boolean stop = false;
         while (i < line.length() - 3){
           if (i < line.length() - 7 && line.substring(i, i + 7).equals("don't()") || ignore){
-            System.out.println(i + "hi");
             ignore = true;
             while (i < line.length() - 3 && !stop){
               if (!line.substring(i, i + 4).equals("do()")){
@@ -27,7 +26,6 @@ public class D3P2{
                 stop = true;
                 ignore = false;
                 i += 4;
-                //System.out.println(line.charAt(i));
               }
             }
             stop = false;

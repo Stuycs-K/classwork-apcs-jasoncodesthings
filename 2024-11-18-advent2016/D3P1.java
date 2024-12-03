@@ -14,11 +14,7 @@ public class D3P1{
         line = data.nextLine();
         int i = 0;
         while (i < line.length() - 3){
-          //System.out.println(line.substring(i, i + 3));
-          //System.out.println("index" + i);
           if (line.substring(i, i + 3).equals("mul")){
-            //System.out.println(line.substring(i).indexOf(")") + 1);
-            System.out.println(line.substring(i, line.substring(i).indexOf(")") + 1 + i) + ", " + isMul(line.substring(i, line.substring(i).indexOf(")") + 1 + i)));
             if (isMul(line.substring(i, line.substring(i).indexOf(")") + 1 + i))){
               answer += Integer.parseInt(line.substring(i).substring(line.substring(i).indexOf("(") + 1, line.substring(i).indexOf(","))) *
               Integer.parseInt(line.substring(i).substring(line.substring(i).indexOf(",") + 1, line.substring(i).indexOf(")")));
