@@ -14,23 +14,42 @@ public class D4P1{
       }
       String[] arr = total.split(", ");
       int answer = 0;
-      System.out.println(isXMAS('X', 'M', 'A', 'S'));
-      System.out.println(isXMAS('X', 'S', 'A', 'S'));
-/*
+
       for (int i = 0; i < arr.length; i++){
         for (int j = 0; j < arr[i].length(); j++){
           if (arr[i].charAt(j) == 'X'){
-            if (j <= arr[i].length() - 4){ //right side testing
-              if (i >= 3){ //diag up right
-
+            if (j <= arr[i].length() - 4){
+              if (i >= 3){
+                answer += isXMAS(arr[i].charAt(j), arr[i - 1].charAt(j + 1), arr[i - 2].charAt(j + 2), arr[i - 3].charAt(j + 3));
               }
+              if (i <= arr.length - 4){
+                answer += isXMAS(arr[i].charAt(j), arr[i + 1].charAt(j + 1), arr[i + 2].charAt(j + 2), arr[i + 3].charAt(j + 3));
+              }
+              answer += isXMAS(arr[i].charAt(j), arr[i].charAt(j + 1), arr[i].charAt(j + 2), arr[i].charAt(j + 3));
+            }
+
+            if (j >= 3){
+              if (i >= 3){
+                answer += isXMAS(arr[i].charAt(j), arr[i - 1].charAt(j - 1), arr[i - 2].charAt(j - 2), arr[i - 3].charAt(j - 3));
+              }
+              if (i <= arr.length - 4){
+                answer += isXMAS(arr[i].charAt(j), arr[i + 1].charAt(j - 1), arr[i + 2].charAt(j - 2), arr[i + 3].charAt(j - 3));
+              }
+              answer += isXMAS(arr[i].charAt(j), arr[i].charAt(j - 1), arr[i].charAt(j - 2), arr[i].charAt(j - 3));
+            }
+
+            if (i >= 3){
+              answer += isXMAS(arr[i].charAt(j), arr[i - 1].charAt(j), arr[i - 2].charAt(j), arr[i - 3].charAt(j));
+            }
+            if (i <= arr.length - 4){
+              answer += isXMAS(arr[i].charAt(j), arr[i + 1].charAt(j), arr[i + 2].charAt(j), arr[i + 3].charAt(j));
             }
           }
         }
-      }*/
+      }
 
       data.close();
-      return -1;
+      return answer;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
