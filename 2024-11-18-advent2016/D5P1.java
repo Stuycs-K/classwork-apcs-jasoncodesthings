@@ -32,7 +32,7 @@ public class D5P1{
       }
 
       data.close();
-      return -1;
+      return answer;
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
@@ -51,7 +51,7 @@ public class D5P1{
         }
 
         if (after.get(j) == nums[i]){
-          for (int l = i + 1; k < nums.length; l++){
+          for (int l = i + 1; l < nums.length; l++){
             if (nums[l] == before.get(j)){
               return false;
             }
