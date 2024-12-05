@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class D5P1{
-  public static int asd(String filename){
+  public static int addMiddle(String filename){
     try{
       File file = new File(filename);
       Scanner data = new Scanner(file);
@@ -63,6 +63,6 @@ public class D5P1{
   }
 
   public static void main(String[]args){
-    System.out.println(asd("inputD5.txt"));
+    System.out.println(addMiddle("inputD5.txt"));
   }
 }
