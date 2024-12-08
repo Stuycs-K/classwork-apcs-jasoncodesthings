@@ -4,28 +4,32 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class D7P1{
-  public static int calibrationCount(String filename){
+  public static long calibrationCount(String filename){
     try{
       File file = new File(filename);
       Scanner data = new Scanner(file);
       String line;
-      int answer = 0;
+      ArrayList<String> legit = new ArrayList<String>();
+      long answer = 0;
 
       while (data.hasNextLine()){
         line = data.nextLine();
-        int given = Integer.parseInt(line.substring(0, line.indexOf(": ")));
+        long given = Long.parseLong(line.substring(0, line.indexOf(": ")));
         String[] convert = line.substring(line.indexOf(" ") + 1).split(" ");
         ArrayList<Integer> nums = new ArrayList<Integer>();
         for (String convNum : convert){
           nums.add(Integer.parseInt(convNum));
         }
-        ArrayList<Integer> actualList = new ArrayList<Integer>();
+        ArrayList<String> actualList = new ArrayList<String>();
         possibleResults(actualList, nums, 0, 0);
-        if (actualList.contains(given)){
-          answer++;
+        if (actualList.contains(Long.toString(given))){
+          legit.add(Long.toString(given));
         }
       }
 
+      for (int i = 0; i < legit.size(); i++){
+        answer += Long.parseLong(legit.get(i));
+      }
       data.close();
       return answer;
     } catch (FileNotFoundException ex) {
@@ -34,14 +38,12 @@ public class D7P1{
     }
   }
 
-  public static void possibleResults(ArrayList<Integer> actualList, ArrayList<Integer> nums, int i, int current){
+  public static void possibleResults(ArrayList<String> actualList, ArrayList<Integer> nums, int i, long current){
     if (i == nums.size()){
-      actualList.add(current);
-      System.out.println(actualList);
+      actualList.add(Long.toString(current));
     }
     else{
       int value = nums.get(i);
-      System.out.println(i + ", " + value);
       possibleResults(actualList, nums, i + 1, current + value);
       if (current != 0){
         possibleResults(actualList, nums, i + 1, current * value);
