@@ -37,11 +37,10 @@ public class D6P2{
           }
 
           while (0 <= row && row < map.size() && 0 <= column && column < map.get(0).length() && !loopActive){
-            //System.out.println(beenIn);
             if (beenIn.contains(row + ", " + column + ", " + direction)){
               loopActive = true;
-              System.out.println(row + ", " + column + ", " + direction + i + j);
               answer++;
+              System.out.println(answer);
             }
             else{
               map.get(row).setCharAt(column, 'X');
@@ -80,10 +79,6 @@ public class D6P2{
                 direction = "north";
               }
             }
-            for (int k = 0; k < map.size(); k++){
-              System.out.println(map.get(k));
-            }
-            System.out.println("iusfbiudfhugihfui");
           }
           loopActive = false;
           beenIn = new ArrayList<String>();
