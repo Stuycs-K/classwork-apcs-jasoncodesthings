@@ -19,8 +19,11 @@ public class D7P1{
         for (String convNum : convert){
           nums.add(Integer.parseInt(convNum));
         }
-        System.out.println(given);
-        System.out.println(nums);
+        ArrayList<Integer> actualList = new ArrayList<Integer>();
+        possibleResults(actualList, nums, 0, 0);
+        if (actualList.contains(given)){
+          answer++;
+        }
       }
 
       data.close();
@@ -28,6 +31,24 @@ public class D7P1{
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
+    }
+  }
+
+  public static void possibleResults(ArrayList<Integer> actualList, ArrayList<Integer> nums, int i, int current){
+    if (i == nums.size()){
+      actualList.add(current);
+      System.out.println(actualList);
+    }
+    else{
+      int value = nums.get(i);
+      System.out.println(i + ", " + value);
+      possibleResults(actualList, nums, i + 1, current + value);
+      if (current != 0){
+        possibleResults(actualList, nums, i + 1, current * value);
+      }
+      else{
+        possibleResults(actualList, nums, i + 1, value);
+      }
     }
   }
 
