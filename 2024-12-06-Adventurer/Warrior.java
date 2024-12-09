@@ -34,7 +34,10 @@ public class Warrior extends Adventurer{
     return other.getName() + " was buffed with 5 strength.";
   }
   public String support(){
-    return "";
+    if (this.getSpecial() + 5 <= this.getSpecialMax()){
+      this.setSpecial(this.getSpecial() + 5);
+    }
+    return this.getName() + " was buffed with 5 strength.";
   }
   public String specialAttack(Adventurer other){
     return "";
