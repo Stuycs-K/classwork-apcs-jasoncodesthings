@@ -41,7 +41,7 @@ public class Warrior extends Adventurer{
   }
   public String specialAttack(Adventurer other){
     other.applyDamage(400);
-    super.restoreSpecial(0);
+    this.setSpecial(0);
     return this.getName() + " used special attack!";
   }
 }
