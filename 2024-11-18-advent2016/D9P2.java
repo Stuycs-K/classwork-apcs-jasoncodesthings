@@ -29,13 +29,15 @@ public class D9P2{
       System.out.println(idMap);
 
       for (int i = idMap.size() - 1; i >= 0; i--){
+        int start = i;
         if (i == notNumIndexOf(idMap)){
-          int start = i;
           while (idMap.get(start) == idMap.get(i)){
             start--;
           }
           System.out.println(start);
         }
+
+        System.out.println(freeSpaceCheck(idMap, i - start, start));
       }
 
       for (int i = 0; i < idMap.size(); i++){
@@ -56,6 +58,22 @@ public class D9P2{
     for (int i = idMap.size() - 1; i >= 0; i--){
       if (!idMap.get(i).equals(".")){
         return i;
+      }
+    }
+    return -1;
+  }
+
+  public static int freeSpaceCheck(ArrayList<String> idMap, int length, int start){
+    for (int i = 0; i < start; i++){
+      if (idMap.get(i).equals(".")){
+        int end = i;
+        while (idMap.get(end).equals(".")){
+          //i++;
+          end++;
+        }
+        int lengthFree = end - i;
+        i = end;
+        System.out.println(lengthFree);
       }
     }
     return -1;
