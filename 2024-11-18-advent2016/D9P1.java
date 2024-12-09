@@ -4,13 +4,14 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class D9P1{
-  public static int discChecksum(String filename){
+  public static long discChecksum(String filename){
     try{
       File file = new File(filename);
       Scanner data = new Scanner(file);
       String line = data.nextLine();
       ArrayList<String> idMap = new ArrayList<String>();
-      int answer = 0, countID = 0;
+      long answer = 0; 
+      int countID = 0;
 
       for (int i = 0; i < line.length(); i++){
         if (i % 2 == 0){
