@@ -8,9 +8,18 @@ public class Driver{
     System.out.println(p1.getSpecialMax());
     p1.setSpecial(50);
     System.out.println(p1.getSpecial());
+    System.out.println(" ");
+
     System.out.println(p1.attack(p2));
     System.out.println(p1.support(p2));
     System.out.println(p1.support());
     System.out.println(p1.specialAttack(p2));
+    System.out.println(p1.support());
+
+    System.out.println(" ");
+    System.out.println(p1);
+    System.out.println(p1.getSpecialName());
+    System.out.println(p1.getSpecial());
+    System.out.println(p1.getSpecialMax());
   }
 }
