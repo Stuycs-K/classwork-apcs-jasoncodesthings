@@ -9,5 +9,6 @@ public class Driver{
     p1.setSpecial(50);
     System.out.println(p1.getSpecial());
     System.out.println(p1.attack(p2));
+    System.out.println(p1.support(p2));
   }
 }
