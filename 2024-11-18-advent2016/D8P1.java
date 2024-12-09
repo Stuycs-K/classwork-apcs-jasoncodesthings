@@ -10,6 +10,7 @@ public class D8P1{
       Scanner data = new Scanner(file);
       String line;
       ArrayList<StringBuilder> map = new ArrayList<StringBuilder>();
+      ArrayList<String> answer = new ArrayList<String>();
 
       while (data.hasNextLine()){
         line = data.nextLine();
@@ -19,7 +20,7 @@ public class D8P1{
       for (int i = 0; i < map.size(); i++){
         for (int j = 0; j < map.get(0).length(); j++){
           if (map.get(i).charAt(j) != '.'){
-            possibleNodes(map, map.get(i).charAt(j));
+            possibleNodes(answer, map, map.get(i).charAt(j));
           }
         }
       }
@@ -36,7 +37,7 @@ public class D8P1{
     }
   }
 
-  public static int possibleNodes(ArrayList<StringBuilder> map, char frequency){
+  public static int possibleNodes(ArrayList<String> answer, ArrayList<StringBuilder> map, char frequency){
     ArrayList<String> coords = new ArrayList<String>();
     for (int i = 0; i < map.size(); i++){
       for (int j = 0; j < map.get(0).length(); j++){
@@ -49,10 +50,20 @@ public class D8P1{
     for (int i = 0; i < coords.size(); i++){
       for (int j = 0; j < coords.size(); j++){
         if (i != j){
-          System.out.println(coords.get(i) + ", " + coords.get(j));
-          int rise = Integer.parseInt(coords.get(j).substring(0, coords.get(j).indexOf("|"))) - Integer.parseInt(coords.get(i).substring(0, coords.get(j).indexOf("|")));
-          int run = Integer.parseInt(coords.get(j).substring(coords.get(j).indexOf("|") + 1)) - Integer.parseInt(coords.get(i).substring(coords.get(j).indexOf("|") + 1));
-          System.out.println(rise + ", " + run);
+          int xi = Integer.parseInt(coords.get(i).substring(coords.get(j).indexOf("|") + 1));
+          int yi = Integer.parseInt(coords.get(i).substring(0, coords.get(j).indexOf("|")));
+          int xj = Integer.parseInt(coords.get(j).substring(coords.get(j).indexOf("|") + 1));
+          int yj = Integer.parseInt(coords.get(j).substring(0, coords.get(j).indexOf("|")));
+          int rise = yj - yi;
+          int run = xj - xi;
+          if (!(answer.contains((-1 * rise + yi) + "|" + (-1 * run + xi)))){
+            answer.add((-1 * rise + yi) + "|" + (-1 * run + xi));
+          }
+          if (!(answer.contains((rise + yj) + "|" + (run + xj)))){
+            answer.add((rise + yj) + "|" + (run + xj));
+          }
+          System.out.println(xi + ", " + yi + ", " + xj + ", " + yj);
+          System.out.println(answer);
         }
       }
     }
