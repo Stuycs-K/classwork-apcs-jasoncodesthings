@@ -45,12 +45,21 @@ public class D8P1{
         }
       }
     }
-    System.out.println(coords);
-    //System.out.println(map);
+
+    for (int i = 0; i < coords.size(); i++){
+      for (int j = 0; j < coords.size(); j++){
+        if (i != j){
+          System.out.println(coords.get(i) + ", " + coords.get(j));
+          int rise = Integer.parseInt(coords.get(j).substring(0, coords.get(j).indexOf("|"))) - Integer.parseInt(coords.get(i).substring(0, coords.get(j).indexOf("|")));
+          int run = Integer.parseInt(coords.get(j).substring(coords.get(j).indexOf("|") + 1)) - Integer.parseInt(coords.get(i).substring(coords.get(j).indexOf("|") + 1));
+          System.out.println(rise + ", " + run);
+        }
+      }
+    }
+
     for (String replace : coords){
       map.get(Integer.parseInt(replace.substring(0, replace.indexOf("|")))).setCharAt(Integer.parseInt(replace.substring(replace.indexOf("|") + 1)), '.');
     }
-    System.out.println(map);
     return -1;
   }
 
