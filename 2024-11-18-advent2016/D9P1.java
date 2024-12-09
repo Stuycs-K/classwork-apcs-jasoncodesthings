@@ -25,6 +25,11 @@ public class D9P1{
           }
         }
       }
+
+      while (idMap.indexOf(".") < notNumIndexOf(idMap)){
+        idMap.set(idMap.indexOf("."), idMap.get(notNumIndexOf(idMap)));
+        idMap.set(notNumIndexOf(idMap), ".");
+      }
       System.out.println(idMap);
 
       data.close();
@@ -33,6 +38,15 @@ public class D9P1{
       System.out.println("File not found");
       return -1;
     }
+  }
+
+  public static int notNumIndexOf(ArrayList<String> idMap){
+    for (int i = idMap.size() - 1; i >= 0; i--){
+      if (!idMap.get(i).equals(".")){
+        return i;
+      }
+    }
+    return -1;
   }
 
   public static void main(String[]args){
