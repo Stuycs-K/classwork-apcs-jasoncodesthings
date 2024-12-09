@@ -30,7 +30,10 @@ public class D9P1{
         idMap.set(idMap.indexOf("."), idMap.get(notNumIndexOf(idMap)));
         idMap.set(notNumIndexOf(idMap), ".");
       }
-      System.out.println(idMap);
+
+      for (int i = 0; i <= notNumIndexOf(idMap); i++){
+        answer += i * Integer.parseInt(idMap.get(i));
+      }
 
       data.close();
       return answer;
