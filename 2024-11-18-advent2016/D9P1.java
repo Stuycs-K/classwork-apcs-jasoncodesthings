@@ -8,10 +8,24 @@ public class D9P1{
     try{
       File file = new File(filename);
       Scanner data = new Scanner(file);
-      String line;
-      int answer = 0;
+      String line = data.nextLine();
+      ArrayList<String> idMap = new ArrayList<String>();
+      int answer = 0, countID = 0;
 
-      //Make the line the entire input and make an ArrayList<String> containing the disc's data with ID number ("num" and "."). Do the swapping and calculate the checksum. 
+      for (int i = 0; i < line.length(); i++){
+        if (i % 2 == 0){
+          for (int j = 0; j < line.charAt(i) - '0'; j++){
+            idMap.add(Integer.toString(countID));
+          }
+          countID++;
+        }
+        else{
+          for (int j = 0; j < line.charAt(i) - '0'; j++){
+            idMap.add(".");
+          }
+        }
+      }
+      System.out.println(idMap);
 
       data.close();
       return answer;
