@@ -56,10 +56,10 @@ public class D8P1{
           int yj = Integer.parseInt(coords.get(j).substring(0, coords.get(j).indexOf("|")));
           int rise = yj - yi;
           int run = xj - xi;
-          if (!(answer.contains((-1 * rise + yi) + "|" + (-1 * run + xi)))){
+          if (!(answer.contains((-1 * rise + yi) + "|" + (-1 * run + xi))) && boundsCheck(map, -1 * rise + yi, -1 * run + xi)){
             answer.add((-1 * rise + yi) + "|" + (-1 * run + xi));
           }
-          if (!(answer.contains((rise + yj) + "|" + (run + xj)))){
+          if (!(answer.contains((rise + yj) + "|" + (run + xj))) && boundsCheck(map, rise + yj, run + xj)){
             answer.add((rise + yj) + "|" + (run + xj));
           }
           System.out.println(xi + ", " + yi + ", " + xj + ", " + yj);
@@ -72,6 +72,10 @@ public class D8P1{
       map.get(Integer.parseInt(replace.substring(0, replace.indexOf("|")))).setCharAt(Integer.parseInt(replace.substring(replace.indexOf("|") + 1)), '.');
     }
     return -1;
+  }
+
+  public static boolean boundsCheck(ArrayList<StringBuilder> map, int x, int y){
+    return 0 <= x && x < map.size() && 0 <= y && y < map.get(0).length();
   }
 
   public static void main(String[]args){
