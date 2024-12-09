@@ -25,12 +25,8 @@ public class D8P1{
         }
       }
 
-      //find all types of frequency
-      //for loop through each unique frequency and find the coords of each instance
-      //then find all of the possible antinodes by using the inside of the distance formula and using a double nested for loop.
-      //count the ones that are in bounds
       data.close();
-      return -1;
+      return answer.size();
     } catch (FileNotFoundException ex) {
       System.out.println("File not found");
       return -1;
@@ -50,8 +46,8 @@ public class D8P1{
     for (int i = 0; i < coords.size(); i++){
       for (int j = 0; j < coords.size(); j++){
         if (i != j){
-          int xi = Integer.parseInt(coords.get(i).substring(coords.get(j).indexOf("|") + 1));
-          int yi = Integer.parseInt(coords.get(i).substring(0, coords.get(j).indexOf("|")));
+          int xi = Integer.parseInt(coords.get(i).substring(coords.get(i).indexOf("|") + 1));
+          int yi = Integer.parseInt(coords.get(i).substring(0, coords.get(i).indexOf("|")));
           int xj = Integer.parseInt(coords.get(j).substring(coords.get(j).indexOf("|") + 1));
           int yj = Integer.parseInt(coords.get(j).substring(0, coords.get(j).indexOf("|")));
           int rise = yj - yi;
@@ -62,8 +58,6 @@ public class D8P1{
           if (!(answer.contains((rise + yj) + "|" + (run + xj))) && boundsCheck(map, rise + yj, run + xj)){
             answer.add((rise + yj) + "|" + (run + xj));
           }
-          System.out.println(xi + ", " + yi + ", " + xj + ", " + yj);
-          System.out.println(answer);
         }
       }
     }
