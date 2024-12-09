@@ -28,16 +28,35 @@ public class D9P2{
       }
       System.out.println(idMap);
 
-      for (int i = idMap.size() - 1; i >= 0; i--){
-        int start = i;
-        if (i == notNumIndexOf(idMap)){
-          while (idMap.get(start) == idMap.get(i)){
-            start--;
+      for (int i = idMap.size() - 1; i > 0; i--){
+        if (idMap.get(i) != "."){
+          int startNum = i;
+          while (idMap.get(startNum).equals(idMap.get(i))){
+            startNum--;
+            if (startNum == -1){
+              break;
+            }
+            System.out.println("startNum: " + startNum + ", " + i);
+            //System.out.println(idMap.get(startNum) == idMap.get(i));
           }
-          System.out.println(start);
+          //System.out.println(i + ", " + startNum);
+          int lengthNum = i - startNum;
+          //System.out.println(lengthNum + "lengthnum: " + idMap.get(startNum) + ", " + idMap.get(i) + ", " + i + ", " + startNum);
+          int startFree = freeSpaceCheck(idMap, lengthNum, startNum);
+          if (startFree != -1){
+            for (int j = startFree; j <= startFree + lengthNum - 1; j++){
+              idMap.set(j, idMap.get(i));
+            }
+            //System.out.println("Startnum: " + startNum + ", " + )
+            for (int j = startNum + 1; j <= startNum + lengthNum; j++){
+              System.out.println("j: " + j);
+              idMap.set(j, ".");
+            }
+          }
+          System.out.println(idMap);
+          i = startNum + 1;
+          System.out.println(i - 1);
         }
-
-        System.out.println(freeSpaceCheck(idMap, i - start, start));
       }
 
       for (int i = 0; i < idMap.size(); i++){
@@ -54,26 +73,18 @@ public class D9P2{
     }
   }
 
-  public static int notNumIndexOf(ArrayList<String> idMap){
-    for (int i = idMap.size() - 1; i >= 0; i--){
-      if (!idMap.get(i).equals(".")){
-        return i;
-      }
-    }
-    return -1;
-  }
-
   public static int freeSpaceCheck(ArrayList<String> idMap, int length, int start){
     for (int i = 0; i < start; i++){
       if (idMap.get(i).equals(".")){
         int end = i;
         while (idMap.get(end).equals(".")){
-          //i++;
           end++;
         }
         int lengthFree = end - i;
+        if (lengthFree >= length){
+          return i;
+        }
         i = end;
-        System.out.println(lengthFree);
       }
     }
     return -1;
