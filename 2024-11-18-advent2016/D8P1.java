@@ -9,13 +9,21 @@ public class D8P1{
       File file = new File(filename);
       Scanner data = new Scanner(file);
       String line;
-      ArrayList<String> map = new ArrayList<String>();
+      ArrayList<StringBuilder> map = new ArrayList<StringBuilder>();
 
       while (data.hasNextLine()){
         line = data.nextLine();
-        map.add(line);
+        map.add(new StringBuilder(line));
       }
-      System.out.println(map);
+
+      for (int i = 0; i < map.size(); i++){
+        for (int j = 0; j < map.get(0).length(); j++){
+          if (map.get(i).charAt(j) != '.'){
+            possibleNodes(map, map.get(i).charAt(j));
+          }
+        }
+      }
+
       //find all types of frequency
       //for loop through each unique frequency and find the coords of each instance
       //then find all of the possible antinodes by using the inside of the distance formula and using a double nested for loop.
@@ -27,6 +35,20 @@ public class D8P1{
       return -1;
     }
   }
+
+  public static int possibleNodes(ArrayList<StringBuilder> map, char frequency){
+    ArrayList<String> coords = new ArrayList<String>();
+    for (int i = 0; i < map.size(); i++){
+      for (int j = 0; j < map.get(0).length(); j++){
+        if (map.get(i).charAt(j) == frequency){
+          coords.add(i + "|" + j);
+        }
+      }
+    }
+    System.out.println(coords);
+    return -1;
+  }
+
   public static void main(String[]args){
     System.out.println(antinodeCount("inputD8.txt"));
   }
