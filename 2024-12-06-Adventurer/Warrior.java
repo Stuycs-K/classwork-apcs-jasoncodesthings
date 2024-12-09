@@ -23,7 +23,9 @@ public class Warrior extends Adventurer{
 
   @Override
   public String attack(Adventurer other){
-    return "";
+    other.applyDamage(99);
+    super.restoreSpecial(5);
+    return this.getName() + " used attack!";
   }
   public String support(Adventurer other){
     return "";
