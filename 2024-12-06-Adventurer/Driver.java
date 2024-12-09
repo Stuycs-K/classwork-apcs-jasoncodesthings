@@ -11,5 +11,6 @@ public class Driver{
     System.out.println(p1.attack(p2));
     System.out.println(p1.support(p2));
     System.out.println(p1.support());
+    System.out.println(p1.specialAttack(p2));
   }
 }

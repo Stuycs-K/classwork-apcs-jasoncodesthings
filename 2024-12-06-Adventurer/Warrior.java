@@ -40,6 +40,8 @@ public class Warrior extends Adventurer{
     return this.getName() + " was buffed with 5 strength.";
   }
   public String specialAttack(Adventurer other){
-    return "";
+    other.applyDamage(400);
+    super.restoreSpecial(0);
+    return this.getName() + " used special attack!";
   }
 }
