@@ -22,7 +22,34 @@ public class Game{
       if (action.equals("a") || action.equals("attack")){
         System.out.println(player.attack(enemy));
       }
-      player.setHP(0);
+      else if (action.equals("sp") || action.equals("special")){
+        System.out.println(player.specialAttack(enemy));
+      }
+      else if (action.equals("su") || action.equals("support")){
+        System.out.println(player.support());
+      }
+      else if (action.equals("quit")){
+        System.out.println("Program terminated.");
+        break;
+      }
+      else{
+        System.out.println("Invalid action. Try again.");
+        continue;
+      }
+      System.out.println(player.getName() + ", " + player.getHP() + "/" + player.getmaxHP() + " HP, " + player.getSpecial() + "/" + player.getSpecialMax() + " " + player.getSpecialName());
+      System.out.println(enemy.getName() + ", " + enemy.getHP() + "/" + enemy.getmaxHP() + " HP, " + enemy.getSpecial() + "/" + enemy.getSpecialMax() + " " + enemy.getSpecialName());
+
+      int enemyAction = (int) (Math.random() * 3);
+      if (enemyAction == 0){
+        System.out.println(enemy.attack(player));
+      }
+      else if (enemyAction == 1){
+        System.out.println(enemy.specialAttack(player));
+      }
+      else{
+        System.out.println(enemy.support());
+      }
+      //player.setHP(0);
     }
   }
 }
