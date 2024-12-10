@@ -15,6 +15,13 @@ public class Game{
     while (player.getHP() > 0 && enemy.getHP() > 0){
       System.out.println(player.getName() + ", " + player.getHP() + "/" + player.getmaxHP() + " HP, " + player.getSpecial() + "/" + player.getSpecialMax() + " " + player.getSpecialName());
       System.out.println(enemy.getName() + ", " + enemy.getHP() + "/" + enemy.getmaxHP() + " HP, " + enemy.getSpecial() + "/" + enemy.getSpecialMax() + " " + enemy.getSpecialName());
+
+      System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit");
+      String action = userInput.nextLine();
+
+      if (action.equals("a") || action.equals("attack")){
+        System.out.println(player.attack(enemy));
+      }
       player.setHP(0);
     }
   }
