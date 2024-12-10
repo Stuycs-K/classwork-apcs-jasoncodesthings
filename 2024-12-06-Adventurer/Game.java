@@ -8,7 +8,7 @@ public class Game{
     //Read one line of user input
     String userName = userInput.nextLine();
 
-    Adventurer player = new Warrior(userName, 100);
+    Adventurer player = new Warrior(userName, 25);
     Adventurer enemy = new CodeWarrior("Boswer", 1000, "c++");
 
     System.out.println(userName + " must defeat Boswer to save the Princess!");
@@ -38,6 +38,7 @@ public class Game{
       }
       System.out.println(player.getName() + ", " + player.getHP() + "/" + player.getmaxHP() + " HP, " + player.getSpecial() + "/" + player.getSpecialMax() + " " + player.getSpecialName());
       System.out.println(enemy.getName() + ", " + enemy.getHP() + "/" + enemy.getmaxHP() + " HP, " + enemy.getSpecial() + "/" + enemy.getSpecialMax() + " " + enemy.getSpecialName());
+      System.out.println(" ");
 
       int enemyAction = (int) (Math.random() * 3);
       if (enemyAction == 0){
@@ -49,7 +50,7 @@ public class Game{
       else{
         System.out.println(enemy.support());
       }
-      //player.setHP(0);
+      System.out.println("\n");
     }
   }
 }

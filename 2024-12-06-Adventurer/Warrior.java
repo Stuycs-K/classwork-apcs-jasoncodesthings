@@ -23,25 +23,35 @@ public class Warrior extends Adventurer{
 
   @Override
   public String attack(Adventurer other){
-    other.applyDamage(99);
+    other.applyDamage(10);
     super.restoreSpecial(5);
-    return this.getName() + " used attack!";
+    return this.getName() + " used attack! " + this.getName() + " sucked up " + other.getName() + "'s blood and also gained 5 strength!";
   }
+
   public String support(Adventurer other){
     if (other.getSpecial() + 5 <= other.getSpecialMax()){
       other.setSpecial(other.getSpecial() + 5);
     }
     return other.getName() + " was buffed with 5 strength.";
   }
+
   public String support(){
-    if (this.getSpecial() + 5 <= this.getSpecialMax()){
-      this.setSpecial(this.getSpecial() + 5);
+    super.restoreSpecial(20);
+    if (this.getHP() + 7 > this.getmaxHP()){
+      super.setHP(this.getmaxHP());
     }
-    return this.getName() + " was buffed with 5 strength.";
+    else{
+      super.setHP(this.getHP() + 7);
+    }
+    return this.getName() + " was buffed with 20 strength and healed for 7 HP.";
   }
+
   public String specialAttack(Adventurer other){
-    other.applyDamage(400);
+    if (strength == 0){
+      return this.getName() + " attemped to throw the axe, but they had no strength!";
+    }
+    other.applyDamage(strength);
     this.setSpecial(0);
-    return this.getName() + " used special attack!";
+    return this.getName() + " used all of their strength to throw the axe!";
   }
 }
