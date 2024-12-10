@@ -13,6 +13,7 @@ public class Game{
 
     System.out.println(userName + " must defeat Boswer to save the Princess!");
     while (player.getHP() > 0 && enemy.getHP() > 0){
+      System.out.println(" ");
       System.out.println(player.getName() + ", " + player.getHP() + "/" + player.getmaxHP() + " HP, " + player.getSpecial() + "/" + player.getSpecialMax() + " " + player.getSpecialName());
       System.out.println(enemy.getName() + ", " + enemy.getHP() + "/" + enemy.getmaxHP() + " HP, " + enemy.getSpecial() + "/" + enemy.getSpecialMax() + " " + enemy.getSpecialName());
 
@@ -51,6 +52,12 @@ public class Game{
         System.out.println(enemy.support());
       }
       System.out.println("\n");
+    }
+    if (player.getHP() <= 0){
+      System.out.println("You lose! You suck!");
+    }
+    else{
+      System.out.println("You win! You are amazing!");
     }
   }
 }
