@@ -1,10 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class D10P2{
-  public static int discChecksumAdvanced(String filename){
+  public static int trailheadCountAdvanced(String filename){
     try{
       File file = new File(filename);
       Scanner data = new Scanner(file);
@@ -57,6 +56,6 @@ public class D10P2{
   }
 
   public static void main(String[]args){
-    System.out.println(discChecksumAdvanced("inputD10.txt"));
+    System.out.println(trailheadCountAdvanced("inputD10.txt"));
   }
 }
