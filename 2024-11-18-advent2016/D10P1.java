@@ -36,11 +36,6 @@ public class D10P1{
 
   public static int score(ArrayList<String> map, ArrayList<String> beenIn, int index, int row, int column){
     int add = 0;
-    System.out.println(row + ", " + column + ", " + map.get(row).charAt(column) + ", " + index);
-    System.out.println(map);
-    //System.out.println(Character.getNumericValue(map.get(row).charAt(column + 1)));
-    System.out.println(index + 1);
-    System.out.println(" ");
     if (index == 9){
       if (!beenIn.contains(row + "|" + column)){
         beenIn.add(row + "|" + column);
