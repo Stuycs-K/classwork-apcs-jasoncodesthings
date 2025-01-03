@@ -1,6 +1,5 @@
 public class MakeWords{
   public static void makeWords(int remainingLetters, String result, String alphabet){
-    //System.out.println(remainingLetters);
     for (int i = 0; i < alphabet.length(); i++){
       if (remainingLetters - 1 != 0){
         makeWords(remainingLetters - 1, result + alphabet.charAt(i), alphabet);
@@ -12,6 +11,6 @@ public class MakeWords{
   }
 
   public static void main(String[]args){
-    makeWords(3, "", "abc");
+    makeWords(Integer.parseInt(args[0]), "", args[1]);
   }
 }
